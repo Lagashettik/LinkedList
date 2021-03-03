@@ -28,6 +28,17 @@ public class LinkedList {
         }
     }
 
+    void insert(int position, int data) {
+        Node node = head;
+        while(position != 1){
+            position--;
+            node = node.next;
+        }
+        Node newNode = new Node(data);
+        newNode.next = node.next;
+        node.next = newNode;
+    }
+
     void display(){
         Node node = head;
         while (node != null){
@@ -39,8 +50,8 @@ public class LinkedList {
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.add(56);
-        linkedList.append(30);
         linkedList.append(70);
+        linkedList.insert(1, 30);
         linkedList.display();
     }
 
