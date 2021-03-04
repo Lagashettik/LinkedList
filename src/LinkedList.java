@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LinkedList {
@@ -51,6 +52,20 @@ public class LinkedList {
         return data.data;
     }
 
+    int popLast(){
+        Node node = head;
+        try{
+            while (node.next != null){
+                tail = node;
+                node = node.next;
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        tail.next = null;
+        return node.data;
+    }
+
     void display(){
         Node node = head;
         while (node != null){
@@ -66,9 +81,8 @@ public class LinkedList {
         linkedList.append(70);
         linkedList.insert(1, 30);
         linkedList.display();
-        System.out.println("\n"+linkedList.pop()+"\n");
+        System.out.println("\n"+linkedList.popLast()+"\n");
         linkedList.display();
-
     }
 
 }
