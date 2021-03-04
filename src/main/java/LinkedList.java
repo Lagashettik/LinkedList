@@ -66,23 +66,17 @@ public class LinkedList {
         return node.data;
     }
 
-    void display(){
+    boolean search(int key){
         Node node = head;
-        while (node != null){
-            System.out.println(node.data);
-            node = node.next;
+        try {
+            while (node.data != key) {
+                node = node.next;
+            }
+        }catch (NullPointerException e){
+            return false;
         }
+        return true;
     }
 
-
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        linkedList.add(56);
-        linkedList.append(70);
-        linkedList.insert(1, 30);
-        linkedList.display();
-        System.out.println("\n"+linkedList.popLast()+"\n");
-        linkedList.display();
-    }
 
 }
