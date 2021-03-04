@@ -66,7 +66,7 @@ public class LinkedList {
         linkedList.append(70);
         linkedList.insert(1, 30);
         linkedList.display();
-        System.out.println(linkedList.pop()+"\n");
+        System.out.println("\n"+linkedList.pop()+"\n");
         linkedList.display();
 
     }
