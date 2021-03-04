@@ -39,6 +39,18 @@ public class LinkedList {
         node.next = newNode;
     }
 
+    int pop(){
+        Node data = new Node();
+        try {
+            data.data = head.data;
+            head = head.next;
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return data.data;
+    }
+
     void display(){
         Node node = head;
         while (node != null){
@@ -47,12 +59,16 @@ public class LinkedList {
         }
     }
 
+
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.add(56);
         linkedList.append(70);
         linkedList.insert(1, 30);
         linkedList.display();
+        System.out.println(linkedList.pop()+"\n");
+        linkedList.display();
+
     }
 
 }
