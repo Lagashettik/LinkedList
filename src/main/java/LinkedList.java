@@ -29,17 +29,6 @@ public class LinkedList {
         }
     }
 
-    void insert(int position, int data) {
-        Node node = head;
-        while(position != 1){
-            position--;
-            node = node.next;
-        }
-        Node newNode = new Node(data);
-        newNode.next = node.next;
-        node.next = newNode;
-    }
-
     int pop(){
         Node data = new Node();
         try {
@@ -66,11 +55,15 @@ public class LinkedList {
         return node.data;
     }
 
-    boolean search(int key){
-        if(getKeyIndex(key) == -1){
-            return false;
+    void insert(int position, int data) {
+        Node node = head;
+        while(position != 1){
+            position--;
+            node = node.next;
         }
-        else return true;
+        Node newNode = new Node(data);
+        newNode.next = node.next;
+        node.next = newNode;
     }
 
     int getKeyIndex(int key){
@@ -87,13 +80,47 @@ public class LinkedList {
         return index;
     }
 
+    boolean search(int key){
+        if(getKeyIndex(key) == -1){
+            return false;
+        }
+        else return true;
+    }
+
+    int size(){
+        Node node = head;
+        int index = 0;
+        while (node != null){
+            node = node.next;
+            index++;
+        }
+        return index;
+    }
+
     void insertAfterKey(int data, int key){
         insert(getKeyIndex(key),data);
     }
 
+    void deleteElement(int data){
+       Node node = head;
+        if(search(data)) {
+            int position = getKeyIndex(data);
+            if (position == 0)
+                pop();
+            else {
+                while (position != 1) {
+                    position--;
+                    node = node.next;
+                }
+                node.next = node.next.next;
+            }
+        }
+       else System.out.println("Element not exist in List");
+    }
+
     void display(){
         Node node = head;
-        while (node.next != null){
+        while (node != null){
             System.out.println(node.data);
             node = node.next;
         }
