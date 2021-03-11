@@ -67,16 +67,36 @@ public class LinkedList {
     }
 
     boolean search(int key){
+        if(getKeyIndex(key) == -1){
+            return false;
+        }
+        else return true;
+    }
+
+    int getKeyIndex(int key){
         Node node = head;
+        int index = 0;
         try {
             while (node.data != key) {
                 node = node.next;
+                index++;
             }
         }catch (NullPointerException e){
-            return false;
+            return -1;
         }
-        return true;
+        return index;
     }
 
+    void insertAfterKey(int data, int key){
+        insert(getKeyIndex(key),data);
+    }
+
+    void display(){
+        Node node = head;
+        while (node.next != null){
+            System.out.println(node.data);
+            node = node.next;
+        }
+    }
 
 }

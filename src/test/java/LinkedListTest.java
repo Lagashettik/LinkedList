@@ -22,4 +22,16 @@ public class LinkedListTest {
         boolean check = linkedList.search(50);
         Assert.assertEquals(false,check);
     }
+
+    @Test
+    public void insertDataAfterKey(){
+        LinkedList linkedList = new LinkedList();
+        linkedList.add(56);
+        linkedList.append(70);
+        linkedList.insert(1, 30);
+
+        linkedList.insertAfterKey(40,30);
+        linkedList.display();
+
+    }
 }
